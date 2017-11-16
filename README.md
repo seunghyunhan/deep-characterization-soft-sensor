@@ -7,7 +7,14 @@ We implemented this code, under the following packages:
 * Tensorflow 
 * Numpy
 
-### How to train
-'''bash
+## How to train
+```bash
 python main.py --epoch 100
-'''
+```
+
+## How to test
+After training, it saves checkpoint in the ./ckpt folder.
+You can retrieve checkpoints by setting --test flags True.
+```bash
+python main.py --epoch 100 --test True
+```
