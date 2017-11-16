@@ -14,7 +14,7 @@ python main.py --epoch 100
 
 ## How to test
 After training, it saves checkpoint in the ./ckpt folder.
-You can retrieve checkpoints by setting --test flags True.
+You can retrieve checkpoints by setting --test flag 'True'.
 ```bash
 python main.py --epoch 100 --test True
 ```
