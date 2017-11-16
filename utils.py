@@ -1,7 +1,6 @@
 import tensorflow as tf
 import numpy as np
 import time
-import xlsxwriter
 
 
 plot_time = time.strftime('%m%d-%H-%M', time.localtime(time.time()))
@@ -36,25 +35,6 @@ def preprocessing(data):
     rng.shuffle(permindex)
     return permindex
 
-# Export data
-def export_plot(options, est_f, est_loc, est_loc_prob):
-    if (FLAGS.export_plot):
-        export_filename = FLAGS.result_dir + FLAGS.input_file + "/plot" + plot_time + ".xlsx"
-        workbook = xlsxwriter.Workbook(export_filename)
-        worksheet = workbook.add_worksheet()
-        for row in range(len(options)):
-            worksheet.write(row, 0, float(options[row][0]))             # Trial
-            worksheet.write(row, 1, float(options[row][1]))             # x_location
-            worksheet.write(row, 2, float(options[row][2]))             # z_location
-            worksheet.write(row, 3, float(options[row][3]))             # velocity
-            worksheet.write(row, 4, float(options[row][4]))             # voltage
-            worksheet.write(row, 5, float(options[row][5]))             # Force
-            worksheet.write(row, 6, float(est_f[row]))                  # Force Estimation
-            worksheet.write(row, 7, int(np.argmax(est_loc[row]))+1)     # Location Estimation
-            worksheet.write(row, 8, float(est_loc_prob[row][0]))        # Location Estimation Probablity
-            worksheet.write(row, 9, float(est_loc_prob[row][1]))        # Location Estimation Probablity
-            worksheet.write(row, 10, float(est_loc_prob[row][2]))       # Location Estimation Probablity
-        workbook.close()
 
 def print_result(options, est_f, ref_f, est_loc, ref_loc, test_seq):
     total_force_truth_results = [[], [], []]

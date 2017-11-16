@@ -5,8 +5,7 @@ import csv
 import time
 import glob
 import model
-from utils import loc2array, preprocessing, print_result, export_plot
-#import demo
+from utils import loc2array, preprocessing, print_result
 
 flags = tf.app.flags
 
@@ -18,8 +17,6 @@ flags.DEFINE_string('result_dir', './figure/', 'Directory to store result')
 flags.DEFINE_string('input_file', 'loc', 'Input file: loc')
 flags.DEFINE_boolean('test', False, 'Run Test or Not')
 flags.DEFINE_string('test_file', 'E100_BS50_S40_FC32_L32', 'Test checkpoint filename')
-flags.DEFINE_boolean('export_plot', False, 'Export test result graph')
-flags.DEFINE_boolean('demo', False, 'Demo')
 
 # Model Settings
 flags.DEFINE_integer('input_dim', 2, 'The dimension of input')
@@ -28,7 +25,6 @@ flags.DEFINE_integer('seq_length', 40, 'The size of window for LSTM network')
 flags.DEFINE_integer('num_lstm_layer', 3, 'The number of multi-LSTM layers')
 flags.DEFINE_integer('lstm_unit', 32, 'The size of hidden unit in a LSTM layer')
 flags.DEFINE_integer('fc_hidden_unit', 32, 'The size of hidden unit in a fully-connected layer')
-
 
 # Training & Optimizer
 flags.DEFINE_integer('total_epoch', 100, 'The number of training epoch')
@@ -130,13 +126,6 @@ def run_test(sess, test_file):
     test_loc_truth = np.reshape(test_loc_truth, [-1, 1])
 
     print_result(test_options, estimate_force, test_force_truth, estimate_loc, test_loc_truth, test_seq)
-
-    if FLAGS.export_plot:
-        export_plot(test_options, estimate_force, estimate_loc, estimate_loc_prob)
-
-#### Not Used Anymore
-#    if FLAGS.demo:
-#        demo.demo_plot(test_data, estimate_loc_prob, test_loc_truth, estimate_force_list)
 
 
 def main(argv=None):
