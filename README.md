@@ -1,6 +1,7 @@
 # deep-characterization-soft-sensor
 
-This is code for the paper "Use of Deep Learning for Characterization of Microfluidic Soft Sensors".
+This is code for the paper: <br>
+*[Use of Deep Learning for Characterization of Microfluidic Soft Sensors](https://ieeexplore.ieee.org/abstract/document/8255560), **Seunghyun Han**, Taekyoung Kim, Dooyoung Kim, Yong-Lae Park and, Sungho Jo, IEEE Robotics and Automation Letter (RA-L), also selected by ICRA'2018*
 
 We implemented this code, under the following packages:
 * Python 3.5.4
